@@ -5,10 +5,13 @@ import java.util.Optional;
 
 import com.tyranotyrano.domain.Member;
 import com.tyranotyrano.repository.MemberRepository;
-import com.tyranotyrano.repository.MemoryMemberRepository;
 
 public class MemberService {
-    private final MemberRepository memberRepository = new MemoryMemberRepository();
+    private final MemberRepository memberRepository;
+
+    public MemberService(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
+    }
 
     public Long join(Member member) {
         validateDuplicateNameMember(member);
