@@ -44,11 +44,14 @@ dependencies {
     implementation "com.querydsl:querydsl-jpa:${queryDslVersion}"
     implementation "com.querydsl:querydsl-apt:${queryDslVersion}"
 
-    // H2
-    runtimeOnly 'com.h2database:h2'
-
     // MySQL
     implementation 'mysql:mysql-connector-java'
+
+    // JDBC
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+
+    // H2
+    runtimeOnly 'com.h2database:h2'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
