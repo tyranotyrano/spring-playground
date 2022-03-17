@@ -15,13 +15,21 @@ import com.tyranotyrano.service.MemberService;
 @Configuration
 public class SpringConfig {
 
-	// 4. Jpa Repository
+	// 5. Spring Data Jpa Repository
+	private final MemberRepository memberRepository;
+
+	@Autowired
+	public SpringConfig(MemberRepository memberRepository) {
+		this.memberRepository = memberRepository;
+	}
+
+	/*// 4. Jpa Repository
 	private final EntityManager em;
 
 	@Autowired
 	public SpringConfig(EntityManager em) {
 		this.em = em;
-	}
+	}*/
 
 	/*
 	// 2. H2 DB + 순수 Jdbc Repository
@@ -50,6 +58,9 @@ public class SpringConfig {
 		// return new JdbcTemplateMemberRepository(dataSource);
 
 		// 4. Jpa Repository
-		return new JpaMemberRepository(em);
+		//return new JpaMemberRepository(em);
+
+		// 5. Spring Data Jpa Repository
+		return memberRepository;
 	}
 }
