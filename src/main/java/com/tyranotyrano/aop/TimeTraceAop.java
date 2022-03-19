@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class TimeTraceAop {
 
-	@Around("execution(* com.tyranotyrano..*(..))")
+	@Around("execution(* com.tyranotyrano.service.*(..))")
 	public Object execute(ProceedingJoinPoint joinPoint) throws Throwable {
 		long start = System.currentTimeMillis();
 		System.out.println("START: " + joinPoint.toString());
@@ -18,7 +18,7 @@ public class TimeTraceAop {
 		} finally {
 			long finish = System.currentTimeMillis();
 			long timeMs = finish - start;
-			System.out.println("END: " + joinPoint.toString() + "->" + timeMs + "ms");
+			System.out.println("END: " + joinPoint + "->" + timeMs + "ms");
 		}
 	}
 }
